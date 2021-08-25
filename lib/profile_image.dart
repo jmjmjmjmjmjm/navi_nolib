@@ -137,10 +137,6 @@ class _ProfileImageState extends State<ProfileImage>
 
     PageReController c = Get.put(PageReController());
     _handleDoubleTapDown(TapDownDetails details, int i) {
-      if (c.opacity.value == 1.0)
-        c.opacity.value = 0.0;
-      else
-        c.opacity.value = 1.0;
       doubleTapDetails[i] = details;
     }
 
@@ -205,6 +201,7 @@ class _ProfileImageState extends State<ProfileImage>
                 absorbing: false,
                 ignoringSemantics: false,
                 child: GestureDetector(
+                  behavior: HitTestBehavior.translucent,
                   onDoubleTap: () =>
                       _handleDoubleTap(index % model.photos!.length),
                   onDoubleTapDown: (details) => _handleDoubleTapDown(
@@ -212,19 +209,17 @@ class _ProfileImageState extends State<ProfileImage>
                   child: InteractiveViewer(
                     onInteractionEnd: (details) {
                       c.opacity.value = 0.0;
+                      if (details.velocity.pixelsPerSecond.dx > 1500 ||
+                          details.velocity.pixelsPerSecond.dx < -1500)
+                        c.pageScroll.value = true;
+                      else
+                        c.pageScroll.value = false;
                       if (transformationController[index % model.photos!.length]
                               .value[0] ==
                           1.0) {
                         c.pageScroll.value = true;
                         c.opacity.value = 1.0;
-                        print(c.pageScroll.value);
                       }
-
-                      if (details.velocity.pixelsPerSecond.dx > 1500 ||
-                          details.velocity.pixelsPerSecond.dx < -1800)
-                        c.pageScroll.value = true;
-                      else
-                        c.pageScroll.value = false;
                     },
                     transformationController:
                         transformationController[index % model.photos!.length],
@@ -232,6 +227,9 @@ class _ProfileImageState extends State<ProfileImage>
                       () => AbsorbPointer(
                         absorbing: c.pageScroll.value ? false : true,
                         child: Dismissible(
+                          behavior: c.pageScroll.value
+                              ? HitTestBehavior.deferToChild
+                              : HitTestBehavior.translucent,
                           onDismissed: (direction) => Navigator.pop(context),
                           direction: DismissDirection.down,
                           key: Key(''),

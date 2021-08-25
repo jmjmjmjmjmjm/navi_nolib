@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class Menu extends StatefulWidget {
   const Menu({Key? key}) : super(key: key);
@@ -14,10 +15,10 @@ class _MenuState extends State<Menu> {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        menuBtn('전체', 0),
-        menuBtn('일일베스트', 1),
-        menuBtn('주간베스트', 2),
-        menuBtn('월간베스트', 3),
+        menuBtn('all'.tr, 0),
+        menuBtn('day'.tr, 1),
+        menuBtn('week'.tr, 2),
+        menuBtn('month'.tr, 3),
       ],
     );
   }
@@ -29,7 +30,7 @@ class _MenuState extends State<Menu> {
         padding: EdgeInsets.zero,
         labelPadding: EdgeInsets.only(left: 16, right: 16),
         label: Text(
-          name,
+          '$name',
           style: TextStyle(
               color: selectsBtn[index] ? Colors.white : Color(0xff2F2F9D),
               fontWeight: FontWeight.bold,

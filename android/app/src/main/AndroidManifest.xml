@@ -2,7 +2,8 @@
     package="com.example.pla0823">
    <application
         android:label="pla0823"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/ic_launcher"
+        android:usesCleartextTraffic ="true">
        <meta-data android:name="com.google.android.geo.API_KEY"
            android:value="AIzaSyAV7I1BAEz8Mx_KxtLLg46t_P9SHsdQukA"/>
         <activity

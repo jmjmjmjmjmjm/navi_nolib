@@ -1,7 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pla0823/model/example_model.dart';
+import 'package:pla0823/webview_page.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
 class Profile extends StatelessWidget {
   ContentModel model;
@@ -48,8 +51,12 @@ class Profile extends StatelessWidget {
             style:
                 GoogleFonts.notoSans(fontSize: 16, fontWeight: FontWeight.w500),
           ),
-          Padding(
-            padding: const EdgeInsets.only(top: 10),
+          MaterialButton(
+            onPressed: () {
+              Get.to(WebViewPage());
+            },
+            minWidth: 0.0,
+            padding: EdgeInsets.zero,
             child: Row(
               children: [
                 Padding(
@@ -57,7 +64,7 @@ class Profile extends StatelessWidget {
                   child: Image.asset('assets/ic_instargram.png'),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 0, right: 1),
+                  padding: const EdgeInsets.only(right: 1),
                   child: Text(
                     model.nick.toString(),
                     style: GoogleFonts.notoSans(

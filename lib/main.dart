@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:pla0823/data/data.dart';
 import 'package:pla0823/profile.dart';
 import 'package:pla0823/profile_image.dart';
+import 'package:pla0823/translation/message.dart';
 
 import 'bottom_info.dart';
 
@@ -17,12 +18,24 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      title: '0823_pla',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    return GestureDetector(
+      onTap: () {
+        FocusScopeNode currentFocus = FocusScope.of(context);
+
+        if (!currentFocus.hasPrimaryFocus) {
+          FocusScope.of(context).requestFocus(new FocusNode());
+          currentFocus.unfocus();
+        }
+      },
+      child: GetMaterialApp(
+        title: '0823_pla',
+        locale: Get.deviceLocale,
+        translations: Message(),
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: Home(),
       ),
-      home: Home(),
     );
   }
 }
@@ -56,7 +69,7 @@ class Home extends StatelessWidget {
         title: Padding(
           padding: const EdgeInsets.only(top: 2, left: 13),
           child: Text(
-            '베스트',
+            'best'.tr,
             style: TextStyle(
                 fontWeight: FontWeight.bold, color: Color(0xff2F2F9D)),
           ),
