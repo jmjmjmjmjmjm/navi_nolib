@@ -29,6 +29,8 @@ class MyApp extends StatelessWidget {
 
 class Home extends StatelessWidget {
   List list = ExampleData.contentList;
+  List see = [];
+
   Home({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -88,7 +90,8 @@ class Home extends StatelessWidget {
                       model: list[index],
                     ),
                     BottomInfo(model: list[index]),
-                    myPageDottedLine()
+                    myPageDottedLine(),
+                    SizedBox(height: 20)
                   ],
                 ),
               ),

@@ -33,8 +33,7 @@ class _GMapState extends State<GMap> {
         position:
             LatLng(widget.model.place['lat'], widget.model.place['lng'])));
     return Container(
-      width: 340,
-      padding: EdgeInsets.only(top: 10),
+      padding: EdgeInsets.only(top: 10, left: 15, right: 15),
       height: 100,
       child: Scaffold(
         body: GoogleMap(

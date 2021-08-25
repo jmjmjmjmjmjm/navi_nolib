@@ -11,41 +11,60 @@ class BottomInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 20, top: 20, right: 20, left: 20),
+      padding: const EdgeInsets.only(bottom: 20, top: 0, right: 20, left: 20),
       child: Column(
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Row(
-                children: [
-                  Text(
-                    '좋아요 ',
-                    style: TextStyle(fontSize: 13),
+          Padding(
+            padding: const EdgeInsets.only(top: 5, bottom: 5),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                MaterialButton(
+                  padding: EdgeInsets.all(8),
+                  minWidth: 0.0,
+                  height: 0,
+                  onPressed: () {},
+                  child: Row(
+                    children: [
+                      Text(
+                        '좋아요 ',
+                        style: TextStyle(fontSize: 13, color: Colors.black),
+                      ),
+                      Text(
+                        model.like.toString(),
+                        style: TextStyle(
+                            fontSize: 13,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black),
+                      )
+                    ],
                   ),
-                  Text(
-                    model.like.toString(),
-                    style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
-                  )
-                ],
-              ),
-              SizedBox(width: 25),
-              Row(
-                children: [
-                  Text(
-                    '댓글 ',
-                    style: TextStyle(fontSize: 13),
+                ),
+                SizedBox(width: 25),
+                MaterialButton(
+                  padding: EdgeInsets.all(8),
+                  minWidth: 0.0,
+                  height: 0,
+                  onPressed: () {},
+                  child: Row(
+                    children: [
+                      Text(
+                        '댓글 ',
+                        style: TextStyle(fontSize: 13),
+                      ),
+                      Text(
+                        model.comment.toString(),
+                        style: TextStyle(
+                            fontSize: 13, fontWeight: FontWeight.bold),
+                      )
+                    ],
                   ),
-                  Text(
-                    model.comment.toString(),
-                    style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
-                  )
-                ],
-              )
-            ],
+                )
+              ],
+            ),
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 15),
+            padding: const EdgeInsets.only(top: 5),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

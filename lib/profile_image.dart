@@ -22,9 +22,6 @@ class _ProfileImageState extends State<ProfileImage>
   late AnimationController _animationController =
       AnimationController(vsync: this, duration: Duration(milliseconds: 400));
 
-  late AnimationController _animationController2 =
-      AnimationController(vsync: this, duration: Duration(milliseconds: 400));
-
   countF(int c) {
     setState(() {
       count = c;
@@ -47,7 +44,7 @@ class _ProfileImageState extends State<ProfileImage>
           Center(
             child: Container(
               height: 180,
-              padding: EdgeInsets.only(bottom: 7),
+              padding: EdgeInsets.only(bottom: 7, left: 5, right: 5),
               child: PageView.builder(
                 controller: pageController,
                 itemBuilder: (context, index) => Container(
